@@ -14,11 +14,12 @@ import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages.component';
 import { webService } from "./web.service";
 import { HttpModule } from "@angular/http";
+import { NewMessageComponent } from "./new-message.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent, MessagesComponent
+    AppComponent, MessagesComponent, NewMessageComponent
   ],
   imports: [
     BrowserModule,
