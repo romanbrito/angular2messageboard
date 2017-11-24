@@ -3,7 +3,7 @@
     {{ title }}
   </h1>
 
-  <new-message></new-message>
+  <new-message (onPosted)="onPosted($event)"></new-message>
 
   <messages></messages>
 

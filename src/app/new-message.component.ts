@@ -1,5 +1,5 @@
-import {Component} from '@angular/core'
-import {webService} from "./web.service";
+import { Component, Output, EventEmitter } from '@angular/core'
+import { webService } from "./web.service";
 
 @Component({
   selector: 'new-message',
@@ -21,6 +21,9 @@ import {webService} from "./web.service";
 })
 
 export class NewMessageComponent {
+
+  @Output() onPosted = new EventEmitter();
+
   constructor(private webService: webService) {}
 
   message = {
@@ -30,5 +33,6 @@ export class NewMessageComponent {
 
   post() {
     this.webService.postMessage(this.message);
+    this.onPosted.emit(this.message);
   }
 }
