@@ -29,6 +29,6 @@ export class NewMessageComponent {
   };
 
   post() {
-    console.log(this.message);
+    this.webService.postMessage(this.message);
   }
 }
