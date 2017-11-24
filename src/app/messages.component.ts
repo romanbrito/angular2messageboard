@@ -2,7 +2,12 @@ import { Component } from '@angular/core'
 
 @Component({
   selector: 'messages',
-  template: 'this is the messages component <div *ngFor="let message of messages">{{message.text}} by {{message.owner}}</div>'
+  template: `
+    <div *ngFor="let message of messages">
+    {{message.text}} by {{message.owner}}
+  </div>
+    <button mat-button>test</button>
+  `
 })
 
 export class MessagesComponent {
