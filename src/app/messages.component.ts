@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { webService} from "./web.service";
 
 @Component({
   selector: 'messages',
@@ -13,5 +14,13 @@ import { Component } from '@angular/core'
 })
 
 export class MessagesComponent {
-  messages = [{text: 'some text', owner: 'Tim'},{text: 'other message', owner: 'Jane'}];
+  constructor(private webService: webService) {}
+
+  async ngOnInit(){
+    var response = await this.webService.getMessages();
+    //console.log(response.json());
+    this.messages = response.json();
+  }
+
+  messages = [];
 }
