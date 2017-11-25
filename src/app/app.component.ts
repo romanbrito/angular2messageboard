@@ -3,12 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   styleUrls: ['./app.component.css'],
-  template: `
-    <div>
+  template: `    
       <nav></nav>
-      <new-message></new-message>
-      <messages></messages>
-    </div>
+    <router-outlet></router-outlet>
   `
 })
 export class AppComponent {}
