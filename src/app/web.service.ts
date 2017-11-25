@@ -1,17 +1,38 @@
 import { Http } from '@angular/http';
-import { Injectable} from "@angular/core";
+import { Injectable } from "@angular/core";
+import { MatSnackBar } from "@angular/material";
 
 @Injectable()
 export class webService {
   BASE_URL = 'http://localhost:3000/api/';
 
-  constructor(private http: Http) {}
+  messages = [];
 
-  getMessages() {
-    return this.http.get(this.BASE_URL + '/messages').toPromise();
+  constructor(private http: Http, private sb : MatSnackBar) {
+    this.getMessages();
   }
 
-  postMessage(message) {
-    return this.http.post(this.BASE_URL + '/messages', message).toPromise();
+  async getMessages() {
+    try {
+      let response = await this.http.get(this.BASE_URL + '/messages').toPromise();
+      this.messages = response.json();
+    } catch (error) {
+      this.handleError('Unable to get messages')
+    }
+
+  }
+
+  async postMessage(message) {
+    try {
+      let response = await this.http.post(this.BASE_URL + '/messages', message).toPromise();
+      this.messages.push(response.json());
+    } catch (error) {
+      this.handleError('Unable to post message');
+    }
+  }
+
+  private handleError(error) {
+    console.error(error);
+    this.sb.open(error, 'close', {duration: 2000});
   }
 }
