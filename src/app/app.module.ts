@@ -1,6 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { RouterModule } from "@angular/router";
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
@@ -11,19 +11,25 @@ import {
   MatToolbarModule
 } from '@angular/material';
 
-import { AppComponent } from './app.component';
-import { MessagesComponent } from './messages.component';
-import { webService } from "./web.service";
-import { HttpModule } from "@angular/http";
-import { NewMessageComponent } from "./new-message.component";
-import { FormsModule} from "@angular/forms";
-import { NavComponent } from "./nav.component";
+import {AppComponent} from './app.component';
+import {MessagesComponent} from './messages.component';
+import {webService} from "./web.service";
+import {HttpModule} from "@angular/http";
+import {NewMessageComponent} from "./new-message.component";
+import {FormsModule} from "@angular/forms";
+import {NavComponent} from "./nav.component";
 import {HomeComponent} from "./home.component";
 
-const routes = [{
-  path: '',
-  component: HomeComponent
-}];
+const routes = [
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'messages',
+    component: MessagesComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -44,4 +50,5 @@ const routes = [{
   providers: [webService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
