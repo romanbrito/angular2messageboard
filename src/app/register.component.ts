@@ -17,14 +17,18 @@ export class RegisterComponent {
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
       firstName: ['', Validators.required],
-      lastName: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
     })
   }
 
   onSubmit() {
     console.log(this.form.valid);
+  }
+
+  isValid(control) {
+    return this.form.controls[control].invalid && this.form.controls[control].touched
   }
 }
