@@ -19,6 +19,7 @@ import {NewMessageComponent} from "./new-message.component";
 import {FormsModule} from "@angular/forms";
 import {NavComponent} from "./nav.component";
 import {HomeComponent} from "./home.component";
+import {RegisterComponent} from "./register.component";
 
 const routes = [
   {
@@ -32,12 +33,16 @@ const routes = [
   {
     path: 'messages/:name',
     component: MessagesComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, MessagesComponent, NewMessageComponent, NavComponent, HomeComponent
+    AppComponent, MessagesComponent, NewMessageComponent, NavComponent, HomeComponent, RegisterComponent
   ],
   imports: [
     BrowserModule,
