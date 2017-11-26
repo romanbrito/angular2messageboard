@@ -1,6 +1,6 @@
-import { Http } from '@angular/http';
-import { Injectable } from "@angular/core";
-import { MatSnackBar } from "@angular/material";
+import {Http} from '@angular/http';
+import {Injectable} from "@angular/core";
+import {MatSnackBar} from "@angular/material";
 
 @Injectable()
 export class webService {
@@ -8,28 +8,25 @@ export class webService {
 
   messages = [];
 
-  constructor(private http: Http, private sb : MatSnackBar) {
-    this.getMessages();
+  constructor(private http: Http, private sb: MatSnackBar) {
+    //this.getMessages();
   }
 
-  async getMessages(user) {
-    try {
-      user = (user) ? '/' + user : '';
-      let response = await this.http.get(this.BASE_URL + '/messages' + user).toPromise();
+  getMessages(user) {
+    user = (user) ? '/' + user : '';
+    this.http.get(this.BASE_URL + '/messages' + user).subscribe(response => {
       this.messages = response.json();
-    } catch (error) {
-      this.handleError('Unable to get messages')
-    }
-
+    }, error => {
+      this.handleError('Unable to get messages');
+    });
   }
 
-  async postMessage(message) {
-    try {
-      let response = await this.http.post(this.BASE_URL + '/messages', message).toPromise();
+  postMessage(message) {
+    this.http.post(this.BASE_URL + '/messages', message).subscribe(response => {
       this.messages.push(response.json());
-    } catch (error) {
+    }, error => {
       this.handleError('Unable to post message');
-    }
+    });
   }
 
   private handleError(error) {
