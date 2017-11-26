@@ -16,7 +16,7 @@ import {MessagesComponent} from './messages.component';
 import {webService} from "./web.service";
 import {HttpModule} from "@angular/http";
 import {NewMessageComponent} from "./new-message.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NavComponent} from "./nav.component";
 import {HomeComponent} from "./home.component";
 import {RegisterComponent} from "./register.component";
@@ -54,6 +54,7 @@ const routes = [
     MatSnackBarModule,
     MatToolbarModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [webService],
