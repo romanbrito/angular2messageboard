@@ -30,6 +30,7 @@ export class webService {
   postMessage(message) {
     this.http.post(this.BASE_URL + '/messages', message).subscribe(response => {
       this.messageStore.push(response.json());
+      this.messageSubject.next(this.messageStore);
     }, error => {
       this.handleError('Unable to post message');
     });
