@@ -20,6 +20,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NavComponent} from "./nav.component";
 import {HomeComponent} from "./home.component";
 import {RegisterComponent} from "./register.component";
+import {AuthService} from "./auth.service";
 
 const routes = [
   {
@@ -57,7 +58,7 @@ const routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [webService],
+  providers: [webService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
