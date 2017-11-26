@@ -21,7 +21,8 @@ export class MessagesComponent {
   ) {}
 
   ngOnInit() {
-    console.log(this.route.snapshot.params.name);
+    const name = this.route.snapshot.params.name;
+    this.webService.getMessages(name);
   }
 
 
