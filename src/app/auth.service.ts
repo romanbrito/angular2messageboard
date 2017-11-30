@@ -16,6 +16,10 @@ export class AuthService {
     return localStorage.getItem(this.NAME_KEY);
   }
 
+  get isAuthenticated() {
+    return !!localStorage.getItem(this.TOKEN_KEY); // returns true or false
+  }
+
   register(user) {
     delete user.confirmPassword;
     this.http.post(this.BASE_URL + '/register', user).subscribe(
