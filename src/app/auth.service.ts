@@ -20,6 +20,13 @@ export class AuthService {
     return !!localStorage.getItem(this.TOKEN_KEY); // returns true or false
   }
 
+  login(loginData) {
+    this.http.post(this.BASE_URL + '/login', loginData).subscribe( res => {
+
+    });
+
+  }
+
   register(user) {
     delete user.confirmPassword;
     this.http.post(this.BASE_URL + '/register', user).subscribe(
