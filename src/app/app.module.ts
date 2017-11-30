@@ -21,6 +21,7 @@ import {NavComponent} from "./nav.component";
 import {HomeComponent} from "./home.component";
 import {RegisterComponent} from "./register.component";
 import {AuthService} from "./auth.service";
+import {LoginComponent} from "./login.component";
 
 const routes = [
   {
@@ -38,12 +39,16 @@ const routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, MessagesComponent, NewMessageComponent, NavComponent, HomeComponent, RegisterComponent
+    AppComponent, MessagesComponent, NewMessageComponent, NavComponent, HomeComponent, RegisterComponent, LoginComponent
   ],
   imports: [
     BrowserModule,
