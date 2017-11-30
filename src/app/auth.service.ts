@@ -14,7 +14,8 @@ export class AuthService {
     delete user.confirmPassword;
     this.http.post(this.BASE_URL + '/register', user).subscribe(
       res => {
-        localStorage.setItem('token', res.json());
+        localStorage.setItem('token', res.json().token);
+        localStorage.setItem('name', res.json().firstName)
       }
     );
   }
