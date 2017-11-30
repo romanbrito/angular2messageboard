@@ -6,15 +6,24 @@ import { AuthService} from "./auth.service";
   template: `
     <mat-card>
       <mat-input-container>
-        <input matInput type="email" placeholder="Email">
+        <input matInput [(ngModel)]="loginData.email" type="email" placeholder="Email">
       </mat-input-container>
       <mat-input-container>
-        <input matInput type="password" placeholder="Password">
+        <input matInput [(ngModel)]="loginData.password" type="password" placeholder="Password">
       </mat-input-container>
-      <button mat-raised-button color="primary">Login</button>
+      <button mat-raised-button color="primary" (click)="login()">Login</button>
     </mat-card>
   `
 })
 export class LoginComponent {
   constructor(private auth: AuthService) {}
+
+  loginData = {
+    email: '',
+    password: ''
+  };
+
+  login() {
+    console.log(this.loginData);
+  }
 }
