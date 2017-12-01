@@ -38,6 +38,6 @@ export class UserComponent {
   }
 
   post() {
-    this.webService.saveUser(this.model);
+    this.webService.saveUser(this.model).subscribe();
   }
 }
