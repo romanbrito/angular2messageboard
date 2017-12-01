@@ -36,6 +36,10 @@ export class webService {
     });
   }
 
+  getUser() {
+    return this.http.get(this.BASE_URL + 'users/me').map(res => res.json());
+  }
+
   private handleError(error) {
     console.error(error);
     this.sb.open(error, 'close', {duration: 2000});
