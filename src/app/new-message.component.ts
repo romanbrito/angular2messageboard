@@ -1,14 +1,12 @@
 import { Component } from '@angular/core'
 import { webService } from "./web.service";
+import {AuthService} from "./auth.service";
 
 @Component({
   selector: 'new-message',
   template: `
     <mat-card class="card">
       <mat-card-content>
-        <mat-input-container>
-          <input [(ngModel)]="message.owner" matInput placeholder="Name" type="text">
-        </mat-input-container>
         <mat-input-container>
           <textarea [(ngModel)]="message.text" matInput placeholder="Message" type="text"></textarea>
         </mat-input-container>
@@ -22,10 +20,10 @@ import { webService } from "./web.service";
 
 export class NewMessageComponent {
 
-  constructor(private webService: webService) {}
+  constructor(private webService: webService, private auth: AuthService) {}
 
   message = {
-    owner: "",
+    owner: this.auth.name,
     text: ""
   };
 
