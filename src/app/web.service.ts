@@ -1,7 +1,8 @@
 import {Http} from '@angular/http';
 import {Injectable} from "@angular/core";
-import { Subject } from "rxjs/Rx";
+import {Subject} from "rxjs/Rx";
 import {MatSnackBar} from "@angular/material";
+import {AuthService} from "./auth.service";
 
 @Injectable()
 export class webService {
@@ -13,7 +14,7 @@ export class webService {
 
   messages = this.messageSubject.asObservable();
 
-  constructor(private http: Http, private sb: MatSnackBar) {
+  constructor(private http: Http, private sb: MatSnackBar, private auth: AuthService) {
     //this.getMessages();
   }
 
@@ -37,7 +38,8 @@ export class webService {
   }
 
   getUser() {
-    return this.http.get(this.BASE_URL + 'users/me').map(res => res.json());
+    return this.http.get(this.BASE_URL + '/users/me', this.auth.tokenHeader).map(res => res.json());
+
   }
 
   private handleError(error) {
