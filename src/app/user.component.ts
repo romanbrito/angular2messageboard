@@ -29,6 +29,14 @@ export class UserComponent {
     lastName: ""
   };
 
+  ngOnInit(){
+    this.webService.getUser().subscribe( res => {
+      this.model.firstName = res.firstName;
+      this.model.lastName = res.lastName;
+    })
+
+  }
+
   post() {
     this.webService.saveUser(this.model);
   }
