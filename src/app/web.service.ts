@@ -42,6 +42,11 @@ export class webService {
 
   }
 
+  saveUser(userData) {
+    return this.http.post(this.BASE_URL + '/users/me', userData, this.auth.tokenHeader).map(res => res.json());
+
+  }
+
   private handleError(error) {
     console.error(error);
     this.sb.open(error, 'close', {duration: 2000});
